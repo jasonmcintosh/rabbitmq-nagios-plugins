@@ -1,5 +1,5 @@
 #!/usr/bin/env /usr/bin/python
-
+import check_rabbit_overview
 import urllib2
 import json
 from pynagios import Plugin, make_option, Response, WARNING, CRITICAL
