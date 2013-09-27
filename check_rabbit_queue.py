@@ -38,19 +38,32 @@ class RabbitQueueCheck(BaseRabbitCheck):
 			return False
 		return True
 
-	def setPerformanceData(self, data, result):
-		result.set_perf_data(self.queue + "_messages", data['messages'])
-		result.set_perf_data(self.queue + "_rate", data['messages_details']['rate'])
-		result.set_perf_data(self.queue + "_consumers", data['consumers'])
-		result.set_perf_data("rabbit_error", self.rabbit_error)
-		return result
+        def setPerformanceData(self, data, result):
 
-	def parseResult(self, data):
-		self.queue = self.options.queue
-		result = self.response_for_value(data['messages'])
-		result.message = ' found ' + str(data['messages']) + ' messages'
-		self.rabbit_note = ' found ' + str(data['messages']) + ' messages'
-		return result
+                if data.get('messages'):
+                        result.set_perf_data(self.queue + "_messages", data['messages'])
+                        result.set_perf_data(self.queue + "_rate", data['messages_details']['rate'])
+                        result.set_perf_data(self.queue + "_consumers", data['consumers'])
+                        result.set_perf_data("rabbit_error", self.rabbit_error)
+                else:
+                        result.set_perf_data(self.queue + "_messages", 0)
+                        result.set_perf_data(self.queue + "_rate", 0)
+                        result.set_perf_data(self.queue + "_consumers", data['consumers'])
+                        result.set_perf_data("rabbit_error", self.rabbit_error)
+
+                return result
+
+        def parseResult(self, data):
+                self.queue = self.options.queue
+                if data.get('messages'):
+                        result = self.response_for_value(data['messages'])
+                        result.message = ' found ' + str(data['messages']) + ' messages'
+                        self.rabbit_note = ' found ' + str(data['messages']) + ' messages'
+                else:
+                        result = self.response_for_value(0)
+                        result.message = ' No messages found in queue'
+                        self.rabbit_note = result.message
+                return result
 
 
 if __name__ == "__main__":
