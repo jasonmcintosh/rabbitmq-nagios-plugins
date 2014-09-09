@@ -15,8 +15,11 @@ class RabbitCheckServer(BaseRabbitCheck):
 		forms self.url, a correct url to polling a rabbit queue
 		"""
 		try:
+                     if self.options.use_ssl is True:
+			self.url = "https://%s:%s/api/nodes" % (self.options.hostname, self.options.port)
+                     else:
 			self.url = "http://%s:%s/api/nodes" % (self.options.hostname, self.options.port)
-			return True
+  	             return True
 		except Exception, e:
 			print str(e)
 			self.rabbit_error = 3

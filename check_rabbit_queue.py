@@ -23,8 +23,11 @@ class RabbitQueueCheck(BaseRabbitCheck):
 		forms self.url, a correct url to polling a rabbit queue
 		"""
 		try:
-			self.url = "http://%s:%s/api/queues/%s/%s" % (self.options.hostname, self.options.port, self.options.vhost, self.options.queue)
-			return True
+                     if self.options.use_ssl is True:
+                       self.url = "https://%s:%s/api/queues/%s/%s" % (self.options.hostname, self.options.port, self.options.vhost, self.options.queue)
+                     else:
+                       self.url = "http://%s:%s/api/queues/%s/%s" % (self.options.hostname, self.options.port, self.options.vhost, self.options.queue)
+		     return True
 		except Exception, e:
 			self.rabbit_error = 3
 			self.rabbit_note = "problem forming api url:", e
