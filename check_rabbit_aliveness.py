@@ -18,8 +18,11 @@ class RabbitAlivenessCheck(BaseRabbitCheck):
 		forms self.url, a correct url to polling a rabbit queue
 		"""
 		try:
+                     if self.options.use_ssl is True:
+			self.url = "https://%s:%s/api/aliveness-test/%s" % (self.options.hostname, self.options.port, self.options.vhost)
+                     else:
 			self.url = "http://%s:%s/api/aliveness-test/%s" % (self.options.hostname, self.options.port, self.options.vhost)
-			return True
+ 		     return True
 		except Exception, e:
 			self.rabbit_error = 3
 			self.rabbit_note = "problem forming api url:", e

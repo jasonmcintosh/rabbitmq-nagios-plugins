@@ -18,6 +18,7 @@ class BaseRabbitCheck(Plugin):
 	username = make_option("--username", dest="username", help="RabbitMQ API username", type="string", default="guest")
 	password = make_option("--password", dest="password", help="RabbitMQ API password", type="string", default="guest")
 	port = make_option("--port", dest="port", help="RabbitMQ API port", type="string", default="15672")
+        use_ssl =  make_option("--ssl", action="store_true", dest="use_ssl", default=False, help="Use SSL")
 
 	def doApiGet(self):
 		"""
