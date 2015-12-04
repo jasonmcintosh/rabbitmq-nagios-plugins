@@ -46,11 +46,11 @@ class RabbitCheckServer(BaseRabbitCheck):
                 nodeData = result
         if nodeData:
             if self.options.type == 'mem':
-                if nodeData['mem_alarm'] == True:
+                if nodeData['mem_alarm'] is True:
                     return Response(CRITICAL, 'memory alarm triggered!')
                 self.percentage = nodeData[self.options.type + "_used"] / (nodeData[self.options.type + "_limit"] / 100.0)
             if self.options.type == 'disk':
-                if nodeData['disk_free_alarm'] == True:
+                if nodeData['disk_free_alarm'] is True:
                     return Response(CRITICAL, 'disk alarm triggered!')
                 self.percentage = nodeData[self.options.type + "_free_limit"] / (nodeData[self.options.type + "_free"] / 100.0)
 
