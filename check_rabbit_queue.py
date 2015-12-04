@@ -1,4 +1,4 @@
-#!/usr/bin/env /usr/bin/python
+#!/usr/bin/env python
 import check_rabbit_queue
 import urllib2
 import json

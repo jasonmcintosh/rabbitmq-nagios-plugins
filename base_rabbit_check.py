@@ -1,5 +1,3 @@
-#!/usr/bin/env /usr/bin/python
-
 import abc
 import urllib2
 import json
