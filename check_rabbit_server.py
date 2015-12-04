@@ -1,8 +1,8 @@
 #!/usr/bin/env python
-import check_rabbit_server
+import string
 from pynagios import make_option, Response, WARNING, CRITICAL
 from base_rabbit_check import BaseRabbitCheck
-import string
+
 
 class RabbitCheckServer(BaseRabbitCheck):
 	"""

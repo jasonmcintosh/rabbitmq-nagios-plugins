@@ -1,10 +1,5 @@
 #!/usr/bin/env python
-import check_rabbit_queue
-import urllib2
-import json
-from pynagios import Plugin, make_option, Response, WARNING, CRITICAL
-from urllib2 import Request, urlopen, URLError, HTTPError
-
+from pynagios import make_option
 from base_rabbit_check import BaseRabbitCheck
 
 

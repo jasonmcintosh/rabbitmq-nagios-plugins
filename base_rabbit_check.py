@@ -1,10 +1,7 @@
 import abc
 import urllib2
 import json
-from pynagios import Plugin, make_option, Response, WARNING, CRITICAL, UNKNOWN
-from urllib2 import Request, urlopen, URLError, HTTPError
-
-import base_rabbit_check
+from pynagios import Plugin, make_option, Response, CRITICAL, UNKNOWN
 
 
 class BaseRabbitCheck(Plugin):

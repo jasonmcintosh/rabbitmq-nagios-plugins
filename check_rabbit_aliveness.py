@@ -1,6 +1,5 @@
 #!/usr/bin/env python
-import check_rabbit_aliveness
-from pynagios import make_option, Response, WARNING, CRITICAL, OK
+from pynagios import make_option, Response, CRITICAL, OK
 from base_rabbit_check import BaseRabbitCheck
 
 
