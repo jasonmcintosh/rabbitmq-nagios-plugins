@@ -21,6 +21,11 @@ define command {
 #}
 
 define command {
+   command_name check_rabbitmq_vhost
+   command_line    $USER1$/nagios_rabbitmq_checks/check_rabbit_vhost.py -H $HOSTNAME$ --username $ARG1$ --password $ARG2$ --vhost $ARG3$ -w $ARG5$ -c $ARG6$
+}
+
+define command {
    command_name check_rabbitmq_queue
    command_line    $USER1$/nagios_rabbitmq_checks/check_rabbit_queue.py -H $HOSTNAME$ --username $ARG1$ --password $ARG2$ --vhost $ARG3$ --queue $ARG4$ -w $ARG5$ -c $ARG6$
 }
