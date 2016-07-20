@@ -29,6 +29,11 @@ define command {
    command_name check_rabbitmq_server
    command_line    $USER1$/nagios_rabbitmq_checks/check_rabbit_server.py -H $HOSTNAME$ --username $ARG1$ --password $ARG2$ --type $ARG3$ -w $ARG4$ -c $ARG5$
 }
+
+define command {
+   command_name check_rabbitmq_federation
+   command_line    $USER1$/nagios_rabbitmq_checks/check_rabbit_federation.py -H $HOSTNAME$ --username $ARG1$ --password $ARG2$
+}
  ```
 
 Definite kudo's to some of the other developers around the web.  In particularly, a lot of the base idea for this came from https://github.com/kmcminn/rabbit-nagios
