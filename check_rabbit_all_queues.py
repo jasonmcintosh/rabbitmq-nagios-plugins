@@ -56,13 +56,13 @@ class RabbitAllQueuesCheck(BaseRabbitCheck):
     def setPerformanceData(self, data, result, queue):
 
         if data.get('messages'):
-                result.set_perf_data(queue + "_messages", data['messages'], warn=self.options.warning, crit=self.options.critical)
-                result.set_perf_data(queue + "_rate", data['messages_details']['rate'])
-                result.set_perf_data(queue + "_consumers", data['consumers'], crit='0')
+                result.set_perf_data(queue + ".messages", data['messages'], warn=self.options.warning, crit=self.options.critical)
+                result.set_perf_data(queue + ".rate", data['messages_details']['rate'])
+                result.set_perf_data(queue + ".consumers", data['consumers'], crit='0')
         else:
-                result.set_perf_data(queue + "_messages", 0, warn=self.options.warning, crit=self.options.critical)
-                result.set_perf_data(queue + "_rate", 0)
-                result.set_perf_data(queue + "_consumers", data['consumers'], crit='0')
+                result.set_perf_data(queue + ".messages", 0, warn=self.options.warning, crit=self.options.critical)
+                result.set_perf_data(queue + ".rate", 0)
+                result.set_perf_data(queue + ".consumers", data['consumers'], crit='0')
 
         return result
 

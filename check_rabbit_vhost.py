@@ -35,8 +35,8 @@ class RabbitVhostCheck(BaseRabbitCheck):
         return True
 
     def setPerformanceData(self, data, result):
-        result.set_perf_data(self.vhost + "_messages", data['messages'])
-        result.set_perf_data(self.vhost + "_rate", data['messages_details']['rate'])
+        result.set_perf_data(self.vhost + ".messages", data['messages'])
+        result.set_perf_data(self.vhost + ".rate", data['messages_details']['rate'])
         result.set_perf_data("rabbit_error", self.rabbit_error)
         return result
 
